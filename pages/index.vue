@@ -4,9 +4,7 @@
       <h1 class="text-xl font-medium">Pokedex</h1>
     </nav>
 
-    <PokemonErrorInfo v-if="fetchFailed === 'pokemons'" @reload="loadMore" />
-
-    <main v-else class="p-6">
+    <main v-if="pokemonsTotal" class="p-6">
       <p>Total Pokemon: {{ pokemonsTotal }}</p>
 
       <section id="pokemon-list" class="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
@@ -22,14 +20,15 @@
       <div v-if="busy" class="text-gray-600 pt-4 text-center">
         <p>Getting more pokemon data, please wait...</p>
       </div>
-
-      <div
-        v-if="pokemons.length !== pokemonsTotal && fetchFailed !== 'pokemons'"
-        v-infinite-scroll="loadMore"
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="10"
-      ></div>
     </main>
+
+    <PokemonErrorInfo v-if="fetchFailed === 'pokemons'" @reload="loadMore" />
+
+    <div
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="disableInfiniteScroll"
+      infinite-scroll-distance="10"
+    />
   </div>
 </template>
 
@@ -60,6 +59,13 @@ export default {
       'transition',
       'fetchFailed',
     ]),
+    disableInfiniteScroll() {
+      return (
+        this.busy ||
+        this.fetchFailed === 'pokemons' ||
+        this.pokemons.length !== this.pokemonsTotal
+      )
+    },
   },
   methods: {
     ...mapActions(usePokemonStore, ['fetchPokemons']),

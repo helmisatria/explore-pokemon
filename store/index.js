@@ -22,6 +22,7 @@ export const usePokemonStore = defineStore('pokemon', {
       const gqlQuery = getPokemonsQuery
 
       return fetch('https://beta.pokeapi.co/graphql/v1beta', {
+        timeout: 2000,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: gqlQuery,
@@ -31,6 +32,7 @@ export const usePokemonStore = defineStore('pokemon', {
       })
         .then((res) => res.json())
         .then((res) => {
+          this.fetchFailed = null
           this.pokemons = [...this.pokemons, ...res.data.species]
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
           this.queryFilter.offset += this.queryFilter.limit
@@ -43,6 +45,7 @@ export const usePokemonStore = defineStore('pokemon', {
       const gqlQuery = getPokemonQuery
 
       return fetch('https://beta.pokeapi.co/graphql/v1beta', {
+        timeout: 2000,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: gqlQuery,
@@ -54,6 +57,7 @@ export const usePokemonStore = defineStore('pokemon', {
       })
         .then((res) => res.json())
         .then((res) => {
+          this.fetchFailed = null
           this.pokemonDetail = res.data.species[0]
         })
         .catch(() => {
