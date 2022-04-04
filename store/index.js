@@ -10,10 +10,11 @@ export const usePokemonStore = defineStore('pokemon', {
 
       queryFilter: {
         offset: 0,
-        limit: 5,
+        limit: 20,
       },
 
       pokemonDetail: {},
+      fetchFailed: null,
     }
   },
   actions: {
@@ -34,6 +35,9 @@ export const usePokemonStore = defineStore('pokemon', {
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
           this.queryFilter.offset += this.queryFilter.limit
         })
+        .catch(() => {
+          this.fetchFailed = 'pokemons'
+        })
     },
     fetchPokemonDetail({ name }) {
       const gqlQuery = getPokemonQuery
@@ -50,8 +54,10 @@ export const usePokemonStore = defineStore('pokemon', {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log('res', JSON.stringify(res))
           this.pokemonDetail = res.data.species[0]
+        })
+        .catch(() => {
+          this.fetchFailed = 'pokemon-detail'
         })
     },
   },

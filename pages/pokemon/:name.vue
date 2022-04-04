@@ -1,15 +1,18 @@
 <template>
   <div>
     <nav class="flex space-x-3 items-center px-6 py-5 shadow-sm">
-      <router-link to="/">
-        <IcoBack />
-      </router-link>
-      <h1 class="text-xl font-medium capitalize">
+      <IcoBack @click.native="$router.go(-1)" />
+      <h1 v-if="pokemon.id" class="text-xl font-medium capitalize">
         {{ pokemon.name }} #{{ formatId(String(pokemon.id)) }}
       </h1>
     </nav>
 
-    <main class="px-6">
+    <PokemonErrorInfo
+      v-if="fetchFailed === 'pokemon-detail'"
+      @reload="fetchPokemonDetail"
+    />
+
+    <main v-else class="px-6 py-5">
       <div class="flex justify-center">
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
@@ -24,14 +27,16 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
+import PokemonErrorInfo from '../../components/PokemonErrorInfo.vue'
 import IcoBack from '../../components/icons/IcoBack.vue'
+
 import { usePokemonStore } from '~/store'
 import { formatId } from '~/utils/string-helpers'
 
 export default {
   name: 'PokemonDetailPage',
-  components: { IcoBack },
+  components: { IcoBack, PokemonErrorInfo },
   async asyncData({ route, $pinia }) {
     const store = usePokemonStore($pinia)
     await store.fetchPokemonDetail({ name: route.params.name })
@@ -42,6 +47,7 @@ export default {
     }),
   },
   methods: {
+    ...mapActions(usePokemonStore, ['fetchPokemonDetail']),
     formatId,
   },
 }

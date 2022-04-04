@@ -4,7 +4,9 @@
       <h1 class="text-xl font-medium">Pokedex</h1>
     </nav>
 
-    <main class="p-6">
+    <PokemonErrorInfo v-if="fetchFailed === 'pokemons'" @reload="loadMore" />
+
+    <main v-else class="p-6">
       <p>Total Pokemon: {{ pokemonsTotal }}</p>
 
       <section id="pokemon-list" class="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
@@ -22,7 +24,7 @@
       </div>
 
       <div
-        v-if="pokemons.length !== pokemonsTotal"
+        v-if="pokemons.length !== pokemonsTotal && fetchFailed !== 'pokemons'"
         v-infinite-scroll="loadMore"
         infinite-scroll-disabled="busy"
         infinite-scroll-distance="10"
@@ -33,12 +35,15 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
+
+import PokemonErrorInfo from '../components/PokemonErrorInfo.vue'
 import PokemonListCard from '../components/PokemonListCard.vue'
 import { usePokemonStore } from '~/store'
 
 export default {
   name: 'ListPokemon',
-  components: { PokemonListCard },
+  components: { PokemonListCard, PokemonErrorInfo },
+  scrollToTop: false,
   async asyncData({ $pinia }) {
     const store = usePokemonStore($pinia)
     await store.fetchPokemons()
@@ -49,14 +54,23 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePokemonStore, ['pokemons', 'pokemonsTotal', 'transition']),
+    ...mapState(usePokemonStore, [
+      'pokemons',
+      'pokemonsTotal',
+      'transition',
+      'fetchFailed',
+    ]),
   },
   methods: {
     ...mapActions(usePokemonStore, ['fetchPokemons']),
     async loadMore() {
       this.busy = true
-      await this.fetchPokemons()
-      this.busy = false
+
+      try {
+        await this.fetchPokemons()
+      } finally {
+        this.busy = false
+      }
     },
   },
 }
