@@ -10,7 +10,21 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia'
+import { useStore } from '~/store'
+
 export default {
   name: 'IndexPage',
+  async asyncData({ $pinia }) {
+    const store = useStore($pinia)
+    await store.fetchPokemons()
+  },
+  methods: {
+    ...mapActions(useStore, ['fetchPokemons']),
+
+    init() {
+      this.fetchPokemons()
+    },
+  },
 }
 </script>
