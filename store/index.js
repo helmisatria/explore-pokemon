@@ -27,8 +27,9 @@ export const usePokemonListStore = defineStore('list', {
       })
         .then((res) => res.json())
         .then((res) => {
-          this.pokemons = res.data.species
+          this.pokemons = [...this.pokemons, ...res.data.species]
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
+          this.queryFilter.offset += this.queryFilter.limit
         })
     },
   },

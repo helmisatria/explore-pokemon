@@ -13,12 +13,23 @@
           :pokemon="pokemon"
         />
       </section>
+
+      <div v-if="busy" class="text-gray-600 pt-4 text-center">
+        <p>Getting more pokemon data, please wait...</p>
+      </div>
+
+      <div
+        v-if="pokemons.length !== pokemonsTotal"
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="busy"
+        infinite-scroll-distance="10"
+      ></div>
     </main>
   </div>
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import PokemonListCard from '../components/PokemonListCard.vue'
 import { usePokemonListStore } from '~/store'
 
@@ -29,8 +40,27 @@ export default {
     const store = usePokemonListStore($pinia)
     await store.fetchPokemons()
   },
+  data() {
+    return {
+      busy: false,
+    }
+  },
   computed: {
-    ...mapState(usePokemonListStore, ['pokemons', 'pokemonsTotal']),
+    ...mapState(usePokemonListStore, [
+      'pokemons',
+      'pokemonsTotal',
+      'transition',
+    ]),
+  },
+  methods: {
+    ...mapActions(usePokemonListStore, ['fetchPokemons']),
+    async loadMore() {
+      this.busy = true
+      await this.fetchPokemons()
+      this.busy = false
+
+      console.log('load more!')
+    },
   },
 }
 </script>
