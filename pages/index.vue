@@ -7,7 +7,7 @@
     <main v-if="pokemonsTotal" class="p-6">
       <p>Total Pokemon: {{ pokemonsTotal }}</p>
 
-      <section id="pokemon-list" class="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
+      <section id="pokemon-list" class="mt-4 grid grid-cols-2 gap-3">
         <router-link
           v-for="pokemon in pokemons"
           :key="pokemon.id"

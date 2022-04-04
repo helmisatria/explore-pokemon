@@ -12,7 +12,7 @@
           variation === 'small' ? 'text-xs px-2' : 'px-3',
           `bg-pokemon-${pokemonType.type.name}`,
         ]"
-        class="border border-gray-400 text-white rounded py-[2px] capitalize"
+        class="text-white rounded py-[2px] capitalize"
       >
         {{ pokemonType.type.name }}
       </li>

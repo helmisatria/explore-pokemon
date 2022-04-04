@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <header class="flex items-center shadow-sm sticky top-0 bg-white">
+  <div
+    :class="[
+      pokemonSpecies.id &&
+        `bg-pokemon-${pokemonSpecies.pokemons[0].types[0].type.name} bg-opacity-10`,
+    ]"
+  >
+    <header class="flex items-center shadow-sm sticky top-0 backdrop-blur-sm">
       <a href="#" class="pl-6 pr-4 py-5" @click="$router.go(-1)">
         <IcoBack />
       </a>

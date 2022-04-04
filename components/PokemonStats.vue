@@ -14,7 +14,9 @@
         <span class="mt-2 block relative w-full bg-gray-200 h-[6px] rounded-lg">
           <span
             class="block bg-green-400 h-[6px] rounded-lg"
-            :style="`width: ${statistic.base_stat}%`"
+            :style="`width: ${
+              statistic.base_stat > 100 ? 100 : statistic.base_stat
+            }%`"
           ></span>
         </span>
       </figure>
