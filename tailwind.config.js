@@ -1,7 +1,32 @@
 module.exports = {
   jit: true,
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        'pokemon-ghost': '#65539d',
+        'pokemon-steel': '#908da9',
+        'pokemon-dragon': '#3b3bbb',
+        'pokemon-flying': '#7a9ff2',
+        'pokemon-water': '#3a8be9',
+        'pokemon-ice': '#3a8be9',
+        'pokemon-unknown': '#255147',
+        'pokemon-grass': '#4fb443',
+        'pokemon-bug': '#889e2a',
+        'pokemon-normal': '#afa485',
+        'pokemon-electric': '#f4c234',
+        'pokemon-ground': '#b7904b',
+        'pokemon-rock': '#b7904b',
+        'pokemon-fire': '#e76b2f',
+        'pokemon-fighting': '#9b4840',
+        'pokemon-dark': '#5e4c4c',
+        'pokemon-psychic': '#f5779e',
+        'pokemon-fairy': '#f9a8ef',
+        'pokemon-poison': '#a15ab1',
+      },
+    },
+  },
   plugins: [],
+  purge: { content: ['./tailwind-safelist.txt'] },
   content: [
     `components/**/*.{vue,js}`,
     `layouts/**/*.vue`,

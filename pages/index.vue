@@ -45,7 +45,9 @@ export default {
   scrollToTop: false,
   async asyncData({ $pinia }) {
     const store = usePokemonStore($pinia)
-    await store.fetchPokemons()
+    if (store.pokemonsTotal === 0) {
+      await store.fetchPokemons()
+    }
   },
   data() {
     return {
@@ -58,7 +60,7 @@ export default {
       return (
         this.busy ||
         this.fetchFailed === 'pokemons' ||
-        this.pokemons.length !== this.pokemonsTotal
+        this.pokemons.length >= this.pokemonsTotal
       )
     },
   },

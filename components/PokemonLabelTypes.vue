@@ -8,8 +8,11 @@
       <li
         v-for="(pokemonType, index) in types"
         :key="index"
-        :class="variation === 'small' ? 'text-xs px-2' : 'px-3'"
-        class="border border-gray-400 bg-gray-50 rounded py-[2px] capitalize"
+        :class="[
+          variation === 'small' ? 'text-xs px-2' : 'px-3',
+          `bg-pokemon-${pokemonType.type.name}`,
+        ]"
+        class="border border-gray-400 text-white rounded py-[2px] capitalize"
       >
         {{ pokemonType.type.name }}
       </li>
