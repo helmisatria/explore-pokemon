@@ -25,7 +25,9 @@
         />
       </div>
 
-      <p class="mt-6">{{ pokemonSpecies.description[0].flavor_text }}</p>
+      <article>
+        <p class="mt-6">{{ pokemonSpecies.description[0].flavor_text }}</p>
+      </article>
 
       <div class="mt-6">
         <h2 class="font-bold">Type</h2>

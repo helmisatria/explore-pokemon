@@ -1,5 +1,5 @@
 <template>
-  <div
+  <article
     class="py-5 relative border border-gray-300 rounded-lg shadow flex flex-col items-center"
   >
     <div
@@ -17,14 +17,22 @@
       class="w-[120px] h-auto"
     />
     <p class="mt-2 text-center capitalize">{{ pokemon.name }}</p>
-  </div>
+
+    <PokemonLabelTypes
+      :types="pokemon.pokemons[0].types"
+      class="mt-2"
+      variation="small"
+    />
+  </article>
 </template>
 
 <script>
 import { formatId } from '../utils/string-helpers'
+import PokemonLabelTypes from './PokemonLabelTypes.vue'
 
 export default {
   name: 'PokemonListCard',
+  components: { PokemonLabelTypes },
   props: {
     pokemon: {
       type: Object,

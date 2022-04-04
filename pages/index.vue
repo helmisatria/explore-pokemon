@@ -53,12 +53,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePokemonStore, [
-      'pokemons',
-      'pokemonsTotal',
-      'transition',
-      'fetchFailed',
-    ]),
+    ...mapState(usePokemonStore, ['pokemons', 'pokemonsTotal', 'fetchFailed']),
     disableInfiniteScroll() {
       return (
         this.busy ||

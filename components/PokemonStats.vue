@@ -5,9 +5,11 @@
       :key="`${index}-${statistic.stat.name}`"
     >
       <figure>
-        <figcaption>
-          <span class="capitalize">{{ statistic.stat.name }}</span>
-          <span>({{ statistic.base_stat }})</span>
+        <figcaption class="text-sm">
+          <span class="capitalize font-semibold">{{
+            statistic.stat.name
+          }}</span>
+          <span class="text-gray-500">({{ statistic.base_stat }})</span>
         </figcaption>
         <span class="mt-2 block relative w-full bg-gray-200 h-[6px] rounded-lg">
           <span
