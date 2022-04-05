@@ -69,7 +69,6 @@ export default {
     },
     workbox: {
       enabled: true,
-      config: { debug: true },
       runtimeCaching: [
         {
           urlPattern:
