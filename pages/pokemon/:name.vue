@@ -65,7 +65,9 @@ export default {
   components: { IcoBack, PokemonErrorInfo, PokemonLabelTypes, PokemonStats },
   async asyncData({ route, $pinia }) {
     const store = usePokemonStore($pinia)
-    await store.fetchPokemonDetail({ name: route.params.name })
+    if (route.params.name !== store.pokemonDetail?.name) {
+      await store.fetchPokemonDetail({ name: route.params.name })
+    }
   },
   computed: {
     ...mapState(usePokemonStore, ['fetchFailed']),
