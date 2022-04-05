@@ -27,6 +27,13 @@ export default {
   computed: {
     ...mapState(usePokemonStore, ['onlineStatus']),
   },
+  watch: {
+    onlineStatus(newStatus, previousStatus) {
+      if (previousStatus === 'offline' && newStatus === 'online') {
+        this.$emit('reload')
+      }
+    },
+  },
   mounted() {
     this.init()
   },
