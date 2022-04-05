@@ -70,8 +70,6 @@ export default {
     workbox: {
       enabled: true,
       config: { debug: true },
-      cachingExtensions: '@/plugins/workbox-cache.js',
-      importScripts: ['custom-sw.js'],
       runtimeCaching: [
         {
           urlPattern:
