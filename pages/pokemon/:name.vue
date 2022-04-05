@@ -56,6 +56,7 @@ import IcoBack from '../../components/icons/IcoBack.vue'
 
 import { usePokemonStore } from '~/store'
 import { formatId } from '~/utils/string-helpers'
+import { insertPokemonDetail, openDB } from '~/plugins/db'
 
 export default {
   name: 'PokemonDetailPage',
@@ -72,7 +73,19 @@ export default {
       pokemonSpecies: (state) => state.pokemonDetail,
     }),
   },
+  mounted() {
+    this.init()
+  },
   methods: {
+    init() {
+      if (!process.client) return
+
+      const request = openDB()
+      request.onsuccess = (event) => {
+        const db = event.target.result
+        insertPokemonDetail(this.pokemonSpecies, db)
+      }
+    },
     ...mapActions(usePokemonStore, ['fetchPokemonDetail']),
     formatId,
   },

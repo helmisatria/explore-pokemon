@@ -1,13 +1,17 @@
 const DB_NAME = 'pokedex'
 const DB_VERSION = 1
 
-let db
+let idxDB
+
+export const openDB = () => {
+  return indexedDB.open(DB_NAME, DB_VERSION)
+}
 
 if (process.client) {
-  const request = indexedDB.open(DB_NAME, DB_VERSION)
+  const request = openDB()
 
   request.onsuccess = (event) => {
-    db = event.target.result
+    idxDB = event.target.result
   }
 
   request.onerror = (event) => {
@@ -25,22 +29,22 @@ if (process.client) {
   }
 }
 
-const createStore = (name) => {
+const createStore = (db = idxDB, name) => {
   const transaction = db?.transaction([name], 'readwrite')
 
   return transaction?.objectStore(name)
 }
 
-export const insertPokemons = (listPokemon) => {
-  const store = createStore('pokemons')
+export const insertPokemons = (listPokemon, db = idxDB) => {
+  const store = createStore(db, 'pokemons')
 
   listPokemon.forEach((pokemon) => {
     store?.put(pokemon)
   })
 }
 
-export const insertPokemonDetail = (pokemon) => {
-  const store = createStore('pokemon_detail')
+export const insertPokemonDetail = (pokemon, db = idxDB) => {
+  const store = createStore(db, 'pokemon_detail')
 
   store?.put(pokemon)
 }
