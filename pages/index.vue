@@ -34,7 +34,7 @@ import { mapActions, mapState } from 'pinia'
 import PokemonErrorInfo from '../components/PokemonErrorInfo.vue'
 import PokemonListCard from '../components/PokemonListCard.vue'
 import { usePokemonStore } from '~/store'
-import { createDbStore, openDB } from '~/plugins/db'
+import { createDbStore, insertPokemons, openDB } from '~/plugins/db'
 
 export default {
   name: 'ListPokemon',
@@ -79,8 +79,20 @@ export default {
       },
     },
   },
+  mounted() {
+    this.init()
+  },
   methods: {
     ...mapActions(usePokemonStore, ['fetchPokemons']),
+    init() {
+      if (!process.client) return
+
+      const request = openDB()
+      request.onsuccess = (event) => {
+        const db = event.target.result
+        insertPokemons(this.pokemons, db)
+      }
+    },
     async loadMore() {
       this.busy = true
 
