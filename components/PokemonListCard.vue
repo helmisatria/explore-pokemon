@@ -4,8 +4,8 @@
     :class="[`${backgroundColor} bg-opacity-30`]"
   >
     <div
-      class="absolute leading-none top-[2px] left-[2px] rounded-md border border-gray-300 py-1 px-2 flex items-center"
-      :class="`${backgroundColor} bg-opacity-50`"
+      class="absolute leading-none top-[2px] left-[2px] rounded-tl-md rounded py-1 px-2 flex items-center"
+      :class="`${backgroundColor} bg-opacity-40`"
     >
       <span class="text-xs text-white"
         >#{{ formatId(String(pokemon.id)) }}</span
