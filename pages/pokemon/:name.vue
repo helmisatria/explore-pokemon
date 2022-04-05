@@ -14,12 +14,7 @@
       </h1>
     </header>
 
-    <PokemonErrorInfo
-      v-if="fetchFailed === 'pokemon-detail'"
-      @reload="fetchPokemonDetail($route.params.name)"
-    />
-
-    <main v-else-if="pokemonSpecies.id" class="px-6 pt-5 pb-10">
+    <main v-if="pokemonSpecies.id" class="px-6 pt-5 pb-10">
       <div class="flex justify-center">
         <img
           :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonSpecies.id}.png`"
@@ -44,6 +39,11 @@
         <PokemonStats class="mt-3" :stats="pokemonSpecies.pokemons[0].stats" />
       </div>
     </main>
+
+    <PokemonErrorInfo
+      v-else-if="fetchFailed === 'pokemon-detail'"
+      @reload="fetchPokemonDetail($route.params.name)"
+    />
   </div>
 </template>
 
