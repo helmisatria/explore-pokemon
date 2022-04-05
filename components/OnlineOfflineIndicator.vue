@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div
-      v-if="onlineStatus !== 'idle' || onlineStatus === 'offline'"
+      v-if="isShowIndicator || onlineStatus === 'offline'"
       class="online-status-indicator max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90"
       :class="onlineStatus === 'online' ? 'bg-green-600' : 'bg-gray-800'"
     >
@@ -19,6 +19,11 @@ import { usePokemonStore } from '~/store'
 
 export default {
   name: 'OnlineOfflineIndicator',
+  data() {
+    return {
+      isShowIndicator: false,
+    }
+  },
   computed: {
     ...mapState(usePokemonStore, ['onlineStatus']),
   },
@@ -29,11 +34,17 @@ export default {
     init() {
       const store = usePokemonStore()
 
+      if (!navigator.onLine) {
+        this.isShowIndicator = true
+        store.onlineStatus = 'offline'
+      }
+
       window.addEventListener('online', () => {
         this.isShowIndicator = true
         store.onlineStatus = 'online'
 
         setTimeout(() => {
+          this.isShowIndicator = false
           store.onlineStatus = 'idle'
         }, 3000)
       })

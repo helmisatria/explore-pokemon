@@ -9,6 +9,9 @@ describe('Component: OnlineOfflineIndicator', () => {
   const localVue = createLocalVue()
   localVue.use(PiniaVuePlugin)
 
+  delete window.navigator
+  window.navigator = { onLine: false }
+
   const generateWrapper = () => {
     return shallowMount(OnlineOfflineIndicator, {
       localVue,
@@ -43,6 +46,9 @@ describe('Component: OnlineOfflineIndicator', () => {
     })
 
     it('should NOT display indicator, given status is idle', async () => {
+      window.navigator = { onLine: true }
+      wrapper = generateWrapper()
+
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'idle'
       await wrapper.vm.$nextTick()
 
@@ -52,6 +58,8 @@ describe('Component: OnlineOfflineIndicator', () => {
 
   describe('Handle Copy Inside Indicator', () => {
     it('should display text inside indicator properly based on the status', async () => {
+      wrapper = generateWrapper()
+
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'offline'
       await wrapper.vm.$nextTick()
 

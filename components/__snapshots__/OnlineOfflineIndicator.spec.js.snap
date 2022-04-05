@@ -4,6 +4,16 @@ exports[`Component: OnlineOfflineIndicator should mount component properly 1`] =
 <transition-stub
   name="slide-fade"
 >
-  <!---->
+  <div
+    class="online-status-indicator max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90 bg-gray-800"
+  >
+    <p
+      class="py-2"
+    >
+      
+      You're offline, please check your connection
+    
+    </p>
+  </div>
 </transition-stub>
 `;
