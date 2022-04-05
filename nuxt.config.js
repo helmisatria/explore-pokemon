@@ -69,7 +69,8 @@ export default {
         {
           urlPattern: 'https://beta.pokeapi.co/graphql/v1beta/.*',
           handler: 'cacheFirst',
-          method: 'GET',
+          method: 'POST',
+          strategyOptions: { cacheableResponse: { statuses: [200] } },
         },
       ],
     },
