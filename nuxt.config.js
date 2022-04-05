@@ -55,6 +55,7 @@ export default {
   pwa: {
     manifest: {
       name: 'Pokedex',
+      display: 'standalone',
       lang: 'en',
     },
     icon: {
@@ -62,6 +63,15 @@ export default {
       sizes: [64, 120, 144, 152, 192, 384, 512],
       // The user agent is free to display the icon in any context.
       purpose: 'any',
+    },
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: 'https://beta.pokeapi.co/graphql/v1beta/.*',
+          handler: 'cacheFirst',
+          method: 'GET',
+        },
+      ],
     },
   },
 
