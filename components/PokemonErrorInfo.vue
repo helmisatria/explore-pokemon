@@ -6,8 +6,22 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import { usePokemonStore } from '~/store'
+
 export default {
   name: 'PokemonErrorInfo',
+  computed: {
+    ...mapState(usePokemonStore, ['onlineStatus']),
+  },
+  watch: {
+    onlineStatus(newStatus, previousStatus) {
+      console.log(newStatus, previousStatus)
+      if (previousStatus !== 'online' && newStatus === 'online') {
+        this.reload()
+      }
+    },
+  },
   methods: {
     reload() {
       this.$emit('reload')

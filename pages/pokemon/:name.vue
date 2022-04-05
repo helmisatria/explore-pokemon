@@ -40,10 +40,7 @@
       </div>
     </main>
 
-    <PokemonErrorInfo
-      v-else-if="fetchFailed === 'pokemon-detail'"
-      @reload="fetchPokemonDetail($route.params.name)"
-    />
+    <PokemonErrorInfo v-else-if="fetchFailed === 'pokemon-detail'" @reload="reloadData" />
   </div>
 </template>
 
@@ -93,10 +90,11 @@ export default {
     },
   },
   mounted() {
-    this.init()
+    this.savePokemonDetail()
   },
   methods: {
-    init() {
+    ...mapActions(usePokemonStore, ['fetchPokemonDetail']),
+    savePokemonDetail() {
       if (!process.client) return
 
       const request = openDB()
@@ -105,7 +103,10 @@ export default {
         insertPokemonDetail(this.pokemonSpecies, db)
       }
     },
-    ...mapActions(usePokemonStore, ['fetchPokemonDetail']),
+    async reloadData() {
+      await this.fetchPokemonDetail({ name: this.$route.params.name })
+      this.savePokemonDetail()
+    },
     formatId,
   },
 }
