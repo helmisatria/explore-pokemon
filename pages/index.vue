@@ -22,7 +22,10 @@
       </div>
     </main>
 
-    <PokemonErrorInfo v-if="fetchFailed === 'pokemons'" @reload="loadMore" />
+    <PokemonErrorInfo
+      v-if="fetchFailed === 'pokemons' && !busy"
+      @reload="loadMore"
+    />
 
     <div
       v-infinite-scroll="loadMore"

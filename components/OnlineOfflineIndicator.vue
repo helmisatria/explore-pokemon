@@ -1,0 +1,61 @@
+<template>
+  <transition name="slide-fade">
+    <div
+      v-if="onlineStatus !== 'idle'"
+      class="w-full fixed top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90"
+      :class="onlineStatus === 'online' ? 'bg-green-600' : 'bg-gray-800'"
+    >
+      <p v-if="onlineStatus === 'offline'" class="py-2">
+        You're offline, please check your connection
+      </p>
+      <p v-else-if="onlineStatus === 'online'" class="py-2">
+        You're online, welcome back!
+      </p>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  name: 'OnlineOfflineIndicator',
+  data() {
+    return {
+      onlineStatus: 'idle',
+    }
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      window.addEventListener('online', () => {
+        this.isShowIndicator = true
+        this.onlineStatus = 'online'
+
+        setTimeout(() => {
+          this.onlineStatus = 'idle'
+        }, 3000)
+      })
+
+      window.addEventListener('offline', () => {
+        this.isShowIndicator = true
+        this.onlineStatus = 'offline'
+      })
+    },
+  },
+}
+</script>
+
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+</style>
