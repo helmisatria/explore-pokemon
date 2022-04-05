@@ -34,6 +34,7 @@ import { mapActions, mapState } from 'pinia'
 import PokemonErrorInfo from '../components/PokemonErrorInfo.vue'
 import PokemonListCard from '../components/PokemonListCard.vue'
 import { usePokemonStore } from '~/store'
+import { createDbStore, openDB } from '~/plugins/db'
 
 export default {
   name: 'ListPokemon',
@@ -51,11 +52,31 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePokemonStore, ['pokemons', 'pokemonsTotal', 'fetchFailed']),
+    ...mapState(usePokemonStore, ['pokemons', 'pokemonsTotal', 'fetchFailed', 'onlineStatus']),
     disableInfiniteScroll() {
       return (
         this.busy || this.fetchFailed === 'pokemons' || this.pokemons.length >= this.pokemonsTotal
       )
+    },
+  },
+  watch: {
+    onlineStatus: {
+      immediate: true,
+      handler(newStatus) {
+        const store = usePokemonStore()
+
+        if (newStatus === 'offline') {
+          const requestOpenDb = openDB()
+          requestOpenDb.onsuccess = (event) => {
+            const db = event.target.result
+            const dbStore = createDbStore(db, 'pokemons')
+            dbStore.getAll().onsuccess = (event) => {
+              const result = event.target.result ?? []
+              store.pokemons = result.sort((a, b) => a.id - b.id)
+            }
+          }
+        }
+      },
     },
   },
   methods: {

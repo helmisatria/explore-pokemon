@@ -40,7 +40,7 @@ export const usePokemonStore = defineStore('pokemon', {
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
           this.queryFilter.offset += this.queryFilter.limit
           if (process.client) {
-            insertPokemons(this.pokemons)
+            insertPokemons([...this.pokemons, ...res.data.species])
           }
         })
         .catch(() => {
