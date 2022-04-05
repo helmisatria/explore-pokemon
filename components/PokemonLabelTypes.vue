@@ -1,10 +1,7 @@
 <template>
   <figure>
     <figcaption class="sr-only">Types</figcaption>
-    <ul
-      :class="variation === 'small' ? 'space-x-1' : 'space-x-2'"
-      class="flex items-center"
-    >
+    <ul :class="variation === 'small' ? 'space-x-1' : 'space-x-2'" class="flex items-center">
       <li
         v-for="(pokemonType, index) in types"
         :key="index"
@@ -35,5 +32,3 @@ export default {
   },
 }
 </script>
-
-<style></style>

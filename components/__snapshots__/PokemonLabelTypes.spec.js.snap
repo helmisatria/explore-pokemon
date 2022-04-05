@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PokemonLabelTypes should mount component properly 1`] = `
+<figure>
+  <figcaption
+    class="sr-only"
+  >
+    Types
+  </figcaption>
+   
+  <ul
+    class="flex items-center space-x-2"
+  >
+    <li
+      class="text-white rounded py-[2px] capitalize px-3 bg-pokemon-fire"
+    >
+      
+      fire
+    
+    </li>
+  </ul>
+</figure>
+`;

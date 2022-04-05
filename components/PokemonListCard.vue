@@ -7,9 +7,7 @@
       class="absolute leading-none top-[2px] left-[2px] rounded-tl-md rounded py-1 px-2 flex items-center"
       :class="`${backgroundColor} bg-opacity-40`"
     >
-      <span class="text-xs text-white"
-        >#{{ formatId(String(pokemon.id)) }}</span
-      >
+      <span class="text-xs text-white">#{{ formatId(String(pokemon.id)) }}</span>
     </div>
     <img
       :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
@@ -22,11 +20,7 @@
       {{ pokemon.name }}
     </h2>
 
-    <PokemonLabelTypes
-      :types="pokemon.pokemons[0].types"
-      class="mt-2"
-      variation="small"
-    />
+    <PokemonLabelTypes :types="pokemon.pokemons[0].types" class="mt-2" variation="small" />
   </article>
 </template>
 
@@ -43,7 +37,6 @@ export default {
       default: () => ({
         id: null,
         name: null,
-        types: [{ type: { name: null } }],
       }),
     },
   },

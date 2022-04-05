@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: OnlineOfflineIndicator should mount component properly 1`] = `
+<transition-stub
+  name="slide-fade"
+>
+  <!---->
+</transition-stub>
+`;

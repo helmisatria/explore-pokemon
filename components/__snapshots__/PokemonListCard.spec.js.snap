@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PokemonListCard should mount component properly 1`] = `
+<article
+  class="pt-5 pb-3 relative rounded-lg shadow flex flex-col items-center bg-pokemon-grass bg-opacity-30"
+>
+  <div
+    class="absolute leading-none top-[2px] left-[2px] rounded-tl-md rounded py-1 px-2 flex items-center bg-pokemon-grass bg-opacity-40"
+  >
+    <span
+      class="text-xs text-white"
+    >
+      #001
+    </span>
+  </div>
+   
+  <img
+    alt="bulbasaur"
+    class="w-[9rem] h-auto"
+    height="144"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+    width="144"
+  />
+   
+  <h2
+    class="mt-2 text-center capitalize font-semibold"
+  >
+    
+    bulbasaur
+  
+  </h2>
+   
+  <pokemonlabeltypes-stub
+    class="mt-2"
+    types="[object Object],[object Object]"
+    variation="small"
+  />
+</article>
+`;

@@ -2,7 +2,7 @@
   <transition name="slide-fade">
     <div
       v-if="onlineStatus !== 'idle' || onlineStatus === 'offline'"
-      class="max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90"
+      class="online-status-indicator max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90"
       :class="onlineStatus === 'online' ? 'bg-green-600' : 'bg-gray-800'"
     >
       <p v-if="onlineStatus === 'offline'" class="py-2">

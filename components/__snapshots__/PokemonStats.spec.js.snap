@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PokemonStats should mount component properly 1`] = `
+<ul
+  class="space-y-4"
+>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          hp
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (39)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 39%;"
+        />
+      </span>
+    </figure>
+  </li>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          attack
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (52)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 52%;"
+        />
+      </span>
+    </figure>
+  </li>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          defense
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (43)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 43%;"
+        />
+      </span>
+    </figure>
+  </li>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          special-attack
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (60)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 60%;"
+        />
+      </span>
+    </figure>
+  </li>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          special-defense
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (50)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 50%;"
+        />
+      </span>
+    </figure>
+  </li>
+  <li
+    class="stats-item"
+  >
+    <figure>
+      <figcaption
+        class="text-sm"
+      >
+        <span
+          class="capitalize font-semibold"
+        >
+          speed
+        </span>
+         
+        <span
+          class="text-gray-500"
+        >
+          (65)
+        </span>
+      </figcaption>
+       
+      <span
+        class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+      >
+        <span
+          class="block bg-green-400 h-[6px] rounded-lg"
+          style="width: 65%;"
+        />
+      </span>
+    </figure>
+  </li>
+</ul>
+`;
