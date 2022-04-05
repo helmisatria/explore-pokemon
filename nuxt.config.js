@@ -1,12 +1,15 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'wartek-pokemon',
+    title: 'Helmi Wartek Pokedex',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Welcome to Helmi Wartek Pokedex',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -52,6 +55,12 @@ export default {
   pwa: {
     manifest: {
       lang: 'en',
+    },
+    icon: {
+      source: '/icon.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+      // The user agent is free to display the icon in any context.
+      purpose: 'any',
     },
   },
 
