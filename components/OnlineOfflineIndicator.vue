@@ -8,38 +8,39 @@
       <p v-if="onlineStatus === 'offline'" class="py-2">
         You're offline, please check your connection
       </p>
-      <p v-else-if="onlineStatus === 'online'" class="py-2">
-        You're online, welcome back!
-      </p>
+      <p v-else-if="onlineStatus === 'online'" class="py-2">You're online, welcome back!</p>
     </div>
   </transition>
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import { usePokemonStore } from '~/store'
+
 export default {
   name: 'OnlineOfflineIndicator',
-  data() {
-    return {
-      onlineStatus: 'idle',
-    }
+  computed: {
+    ...mapState(usePokemonStore, ['onlineStatus']),
   },
   mounted() {
     this.init()
   },
   methods: {
     init() {
+      const store = usePokemonStore()
+
       window.addEventListener('online', () => {
         this.isShowIndicator = true
-        this.onlineStatus = 'online'
+        store.onlineStatus = 'online'
 
         setTimeout(() => {
-          this.onlineStatus = 'idle'
+          store.onlineStatus = 'idle'
         }, 3000)
       })
 
       window.addEventListener('offline', () => {
         this.isShowIndicator = true
-        this.onlineStatus = 'offline'
+        store.onlineStatus = 'offline'
       })
     },
   },

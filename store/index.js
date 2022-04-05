@@ -6,6 +6,8 @@ import { insertPokemonDetail, insertPokemons } from '~/plugins/db'
 export const usePokemonStore = defineStore('pokemon', {
   state: () => {
     return {
+      onlineStatus: 'idle',
+
       pokemons: [],
       pokemonsTotal: 0,
 

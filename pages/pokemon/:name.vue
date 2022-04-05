@@ -56,7 +56,7 @@ import IcoBack from '../../components/icons/IcoBack.vue'
 
 import { usePokemonStore } from '~/store'
 import { formatId } from '~/utils/string-helpers'
-import { insertPokemonDetail, openDB } from '~/plugins/db'
+import { createDbStore, insertPokemonDetail, openDB } from '~/plugins/db'
 
 export default {
   name: 'PokemonDetailPage',
@@ -69,9 +69,24 @@ export default {
   },
   computed: {
     ...mapState(usePokemonStore, ['fetchFailed']),
-    ...mapState(usePokemonStore, {
-      pokemonSpecies: (state) => state.pokemonDetail,
-    }),
+    pokemonSpecies() {
+      const store = usePokemonStore()
+
+      if (!process.client) return store.pokemonDetail
+
+      if (store.onlineStatus === 'offline') {
+        const requestOpenDb = openDB()
+        requestOpenDb.onsuccess = (event) => {
+          const db = event.target.result
+          const dbStore = createDbStore(db, 'pokemon_detail')
+          dbStore.get(this.$route.params.name).onsuccess = (event) => {
+            return event.target.result
+          }
+        }
+      }
+
+      return store.pokemonDetail
+    },
   },
   mounted() {
     this.init()

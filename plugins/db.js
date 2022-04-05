@@ -29,14 +29,14 @@ if (process.client) {
   }
 }
 
-const createStore = (db = idxDB, name) => {
+export const createDbStore = (db = idxDB, name) => {
   const transaction = db?.transaction([name], 'readwrite')
 
   return transaction?.objectStore(name)
 }
 
 export const insertPokemons = (listPokemon, db = idxDB) => {
-  const store = createStore(db, 'pokemons')
+  const store = createDbStore(db, 'pokemons')
 
   listPokemon.forEach((pokemon) => {
     store?.put(pokemon)
@@ -44,7 +44,7 @@ export const insertPokemons = (listPokemon, db = idxDB) => {
 }
 
 export const insertPokemonDetail = (pokemon, db = idxDB) => {
-  const store = createStore(db, 'pokemon_detail')
+  const store = createDbStore(db, 'pokemon_detail')
 
   store?.put(pokemon)
 }
