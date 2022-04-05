@@ -27,7 +27,7 @@
     <div
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="disableInfiniteScroll"
-      infinite-scroll-distance="150"
+      infinite-scroll-distance="300"
     />
   </div>
 </template>

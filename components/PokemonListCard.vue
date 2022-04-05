@@ -2,7 +2,7 @@
   <article
     class="py-5 relative rounded-lg shadow flex flex-col items-center"
     :class="[
-      `bg-pokemon-${pokemon.pokemons[0].types[0].type.name} bg-opacity-10`,
+      `bg-pokemon-${pokemon.pokemons[0].types[0].type.name} bg-opacity-30`,
     ]"
   >
     <div
@@ -15,9 +15,9 @@
     <img
       :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
       :alt="pokemon.name"
-      height="120"
-      width="120"
-      class="w-[120px] h-auto"
+      height="144"
+      width="144"
+      class="w-[9rem] h-auto"
     />
     <p class="mt-2 text-center capitalize font-semibold">{{ pokemon.name }}</p>
 

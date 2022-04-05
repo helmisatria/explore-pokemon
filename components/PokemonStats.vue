@@ -11,7 +11,9 @@
           }}</span>
           <span class="text-gray-500">({{ statistic.base_stat }})</span>
         </figcaption>
-        <span class="mt-2 block relative w-full bg-gray-200 h-[6px] rounded-lg">
+        <span
+          class="mt-2 shadow-sm block relative w-full bg-white h-[6px] rounded-lg"
+        >
           <span
             class="block bg-green-400 h-[6px] rounded-lg"
             :style="`width: ${
