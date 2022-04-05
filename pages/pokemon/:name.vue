@@ -36,10 +36,7 @@
 
       <div class="mt-6">
         <h2 class="font-bold">Type</h2>
-        <PokemonLabelTypes
-          class="mt-3"
-          :types="pokemonSpecies.pokemons[0].types"
-        />
+        <PokemonLabelTypes class="mt-3" :types="pokemonSpecies.pokemons[0].types" />
       </div>
 
       <div class="mt-6">
