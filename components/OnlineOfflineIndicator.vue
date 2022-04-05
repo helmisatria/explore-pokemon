@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div
-      v-if="isShowIndicator || onlineStatus === 'offline'"
+      v-show="isShowIndicator || onlineStatus === 'offline'"
       class="online-status-indicator max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90"
       :class="onlineStatus === 'online' ? 'bg-green-600' : 'bg-gray-800'"
     >
@@ -33,6 +33,8 @@ export default {
   methods: {
     init() {
       const store = usePokemonStore()
+
+      if (!process.client) return
 
       if (!navigator.onLine) {
         this.isShowIndicator = true

@@ -6,6 +6,8 @@ import OnlineOfflineIndicator from './OnlineOfflineIndicator.vue'
 describe('Component: OnlineOfflineIndicator', () => {
   let wrapper
 
+  process.client = true
+
   const localVue = createLocalVue()
   localVue.use(PiniaVuePlugin)
 
@@ -35,24 +37,25 @@ describe('Component: OnlineOfflineIndicator', () => {
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'offline'
       await wrapper.vm.$nextTick()
 
-      expect(wrapper.find('.online-status-indicator').exists()).toBe(true)
+      expect(wrapper.find('.online-status-indicator').element.style.display).toBe('')
     })
 
     it('should display indicator, given status is not idle', async () => {
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'online'
       await wrapper.vm.$nextTick()
 
-      expect(wrapper.find('.online-status-indicator').exists()).toBe(true)
+      expect(wrapper.find('.online-status-indicator').element.style.display).toBe('')
     })
 
     it('should NOT display indicator, given status is idle', async () => {
       window.navigator = { onLine: true }
       wrapper = generateWrapper()
 
+      await wrapper.setData({ isShowIndicator: false })
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'idle'
       await wrapper.vm.$nextTick()
 
-      expect(wrapper.find('.online-status-indicator').exists()).toBe(false)
+      expect(wrapper.find('.online-status-indicator').element.style.display).toBe('none')
     })
   })
 

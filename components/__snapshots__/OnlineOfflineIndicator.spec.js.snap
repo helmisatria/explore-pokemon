@@ -6,6 +6,7 @@ exports[`Component: OnlineOfflineIndicator should mount component properly 1`] =
 >
   <div
     class="online-status-indicator max-w-lg sticky top-0 z-10 transition-all text-white text-center text-sm bg-opacity-90 bg-gray-800"
+    style=""
   >
     <p
       class="py-2"
