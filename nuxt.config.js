@@ -67,12 +67,6 @@ export default {
     workbox: {
       runtimeCaching: [
         {
-          urlPattern: 'https://beta.pokeapi.co/graphql/v1beta',
-          handler: 'NetworkFirst',
-          method: 'POST',
-          strategyOptions: { cacheableResponse: { statuses: [200] } },
-        },
-        {
           urlPattern:
             'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/.*',
           handler: 'NetworkFirst',
