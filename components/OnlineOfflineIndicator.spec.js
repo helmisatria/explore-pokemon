@@ -67,6 +67,7 @@ describe('Component: OnlineOfflineIndicator', () => {
         `You're offline, please check your connection`
       )
 
+      wrapper.setData({ isShowIndicator: true })
       wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'online'
       await wrapper.vm.$nextTick()
 

@@ -12,6 +12,7 @@
     <img
       :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
       :alt="pokemon.name"
+      loading="lazy"
       height="144"
       width="144"
       class="w-[9rem] h-auto"

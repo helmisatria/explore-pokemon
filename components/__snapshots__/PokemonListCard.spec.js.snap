@@ -18,6 +18,7 @@ exports[`Component: PokemonListCard should mount component properly 1`] = `
     alt="bulbasaur"
     class="w-[9rem] h-auto"
     height="144"
+    loading="lazy"
     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
     width="144"
   />

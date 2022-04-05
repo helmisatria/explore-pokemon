@@ -69,6 +69,7 @@ export default {
     },
     workbox: {
       enabled: true,
+      config: { debug: process.env.NODE_ENV === 'development' },
       runtimeCaching: [
         {
           urlPattern:

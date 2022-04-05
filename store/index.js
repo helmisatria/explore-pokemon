@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { getPokemonQuery } from '~/graphql/getPokemon'
 import { getPokemonsQuery } from '~/graphql/getPokemons'
-import { insertPokemonDetail, insertPokemons } from '~/plugins/db'
+import { insertPokemons } from '~/plugins/db'
 
 export const usePokemonStore = defineStore('pokemon', {
   state: () => {
@@ -40,7 +40,7 @@ export const usePokemonStore = defineStore('pokemon', {
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
           this.queryFilter.offset += this.queryFilter.limit
           if (process.client) {
-            insertPokemons([...this.pokemons, ...res.data.species])
+            insertPokemons(res.data.species)
           }
         })
         .catch(() => {
@@ -65,9 +65,6 @@ export const usePokemonStore = defineStore('pokemon', {
         .then((res) => {
           this.fetchFailed = null
           this.pokemonDetail = res.data.species[0]
-          if (process.client) {
-            insertPokemonDetail(this.pokemonDetail)
-          }
         })
         .catch(() => {
           this.fetchFailed = 'pokemon-detail'
