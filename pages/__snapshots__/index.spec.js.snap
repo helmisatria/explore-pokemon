@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page: Homepage should mount component properly 1`] = `
+<div>
+  <nav
+    class="px-6 py-5 shadow-sm"
+  >
+    <h1
+      class="text-xl font-medium"
+    >
+      Pokedex
+    </h1>
+  </nav>
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    infinite-scroll-disabled="disableInfiniteScroll"
+    infinite-scroll-distance="300"
+  />
+</div>
+`;

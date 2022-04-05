@@ -1,0 +1,102 @@
+{
+  "species": [
+    {
+      "id": 1,
+      "name": "bulbasaur",
+      "pokemons": [
+        {
+          "id": 1,
+          "types": [
+            {
+              "type": {
+                "name": "grass"
+              }
+            },
+            {
+              "type": {
+                "name": "poison"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ivysaur",
+      "pokemons": [
+        {
+          "id": 2,
+          "types": [
+            {
+              "type": {
+                "name": "grass"
+              }
+            },
+            {
+              "type": {
+                "name": "poison"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "venusaur",
+      "pokemons": [
+        {
+          "id": 3,
+          "types": [
+            {
+              "type": {
+                "name": "grass"
+              }
+            },
+            {
+              "type": {
+                "name": "poison"
+              }
+            }
+          ]
+        },
+        {
+          "id": 10033,
+          "types": [
+            {
+              "type": {
+                "name": "grass"
+              }
+            },
+            {
+              "type": {
+                "name": "poison"
+              }
+            }
+          ]
+        },
+        {
+          "id": 10195,
+          "types": [
+            {
+              "type": {
+                "name": "grass"
+              }
+            },
+            {
+              "type": {
+                "name": "poison"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "species_aggregate": {
+    "aggregate": {
+      "count": 898
+    }
+  }
+}

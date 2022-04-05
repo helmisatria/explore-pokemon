@@ -5,27 +5,20 @@
     </nav>
 
     <main v-if="pokemonsTotal" class="p-6">
-      <p>Total Pokemon: {{ pokemonsTotal }}</p>
+      <p class="total-pokemon">Total Pokemon: {{ pokemonsTotal }}</p>
 
       <section id="pokemon-list" class="mt-4 grid grid-cols-2 gap-2">
-        <router-link
-          v-for="pokemon in pokemons"
-          :key="pokemon.id"
-          :to="`/pokemon/${pokemon.name}`"
-        >
+        <router-link v-for="pokemon in pokemons" :key="pokemon.id" :to="`/pokemon/${pokemon.name}`">
           <PokemonListCard :pokemon="pokemon" />
         </router-link>
       </section>
 
-      <div v-if="busy" class="text-gray-600 pt-4 text-center">
+      <div v-if="busy" class="loading text-gray-600 pt-4 text-center">
         <p>Getting more pokemon data, please wait...</p>
       </div>
     </main>
 
-    <PokemonErrorInfo
-      v-if="fetchFailed === 'pokemons' && !busy"
-      @reload="loadMore"
-    />
+    <PokemonErrorInfo v-if="fetchFailed === 'pokemons' && !busy" @reload="loadMore" />
 
     <div
       v-infinite-scroll="loadMore"
@@ -61,9 +54,7 @@ export default {
     ...mapState(usePokemonStore, ['pokemons', 'pokemonsTotal', 'fetchFailed']),
     disableInfiniteScroll() {
       return (
-        this.busy ||
-        this.fetchFailed === 'pokemons' ||
-        this.pokemons.length >= this.pokemonsTotal
+        this.busy || this.fetchFailed === 'pokemons' || this.pokemons.length >= this.pokemonsTotal
       )
     },
   },
