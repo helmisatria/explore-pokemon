@@ -68,24 +68,28 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePokemonStore, ['fetchFailed']),
-    pokemonSpecies() {
-      const store = usePokemonStore()
+    ...mapState(usePokemonStore, ['fetchFailed', 'onlineStatus']),
+    ...mapState(usePokemonStore, {
+      pokemonSpecies: (state) => state.pokemonDetail,
+    }),
+  },
+  watch: {
+    onlineStatus: {
+      immediate: true,
+      handler(newStatus) {
+        const store = usePokemonStore()
 
-      if (!process.client) return store.pokemonDetail
-
-      if (store.onlineStatus === 'offline') {
-        const requestOpenDb = openDB()
-        requestOpenDb.onsuccess = (event) => {
-          const db = event.target.result
-          const dbStore = createDbStore(db, 'pokemon_detail')
-          dbStore.get(this.$route.params.name).onsuccess = (event) => {
-            store.pokemonDetail = event.target.result ?? {}
+        if (newStatus === 'offline') {
+          const requestOpenDb = openDB()
+          requestOpenDb.onsuccess = (event) => {
+            const db = event.target.result
+            const dbStore = createDbStore(db, 'pokemon_detail')
+            dbStore.get(this.$route.params.name).onsuccess = (event) => {
+              store.pokemonDetail = event.target.result ?? {}
+            }
           }
         }
-      }
-
-      return store.pokemonDetail
+      },
     },
   },
   mounted() {
