@@ -67,7 +67,7 @@ export default {
     workbox: {
       runtimeCaching: [
         {
-          urlPattern: /^https:\/\/beta\.pokeapi\.co\/graphql\/v1beta(\/.+)?$/,
+          urlPattern: 'https://beta.pokeapi.co/graphql/v1beta',
           handler: 'NetworkFirst',
           method: 'POST',
           strategyOptions: { cacheableResponse: { statuses: [200] } },
