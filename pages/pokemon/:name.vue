@@ -80,7 +80,7 @@ export default {
           const db = event.target.result
           const dbStore = createDbStore(db, 'pokemon_detail')
           dbStore.get(this.$route.params.name).onsuccess = (event) => {
-            return event.target.result
+            store.pokemonDetail = event.target.result ?? {}
           }
         }
       }
