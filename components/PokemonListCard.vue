@@ -18,7 +18,9 @@
       width="144"
       class="w-[9rem] h-auto"
     />
-    <p class="mt-2 text-center capitalize font-semibold">{{ pokemon.name }}</p>
+    <h2 class="mt-2 text-center capitalize font-semibold">
+      {{ pokemon.name }}
+    </h2>
 
     <PokemonLabelTypes
       :types="pokemon.pokemons[0].types"
