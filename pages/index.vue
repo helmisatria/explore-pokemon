@@ -172,7 +172,7 @@ export default {
         this.fetchPokemons({ isAdvancedSearch: true })
 
         window.scrollTo({ top: 0, behavior: 'smooth' })
-      }, 500)
+      }, 800)
     },
   },
 }
