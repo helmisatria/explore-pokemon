@@ -7,6 +7,7 @@
 
     <form
       class="flex space-x-2 items-center justify-between px-6 py-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
+      @submit.prevent="handleSearch"
     >
       <label for="pokemon_name" class="block flex-1 relative rounded-md shadow-sm">
         <p class="sr-only">Pokemon Name</p>
@@ -21,11 +22,11 @@
         </div>
         <input
           id="pokemon_name"
+          v-model="form.name"
           class="rounded block text-gray-800 bg-green-50 w-full pl-12 py-3 pr-12"
           placeholder="Pokemon name"
           aria-describedby="pokemon-name"
           autocomplete="off"
-          :value="queryFilter.name.replace(/\%/g, '')"
           @input="handleSearch"
         />
       </label>
@@ -99,6 +100,9 @@ export default {
   data() {
     return {
       busy: false,
+      form: {
+        name: '',
+      },
     }
   },
   computed: {
@@ -159,7 +163,7 @@ export default {
         this.busy = false
       }
     },
-    handleSearch(e) {
+    handleSearch() {
       if (this.searchTimeout) {
         clearTimeout(this.searchTimeout)
         this.searchTimeout = null
@@ -168,7 +172,7 @@ export default {
       this.searchTimeout = setTimeout(() => {
         this.resetFilter()
 
-        this.queryFilter.name = e.target.value
+        this.queryFilter.name = this.form.name
         this.fetchPokemons({ isAdvancedSearch: true })
 
         window.scrollTo({ top: 0, behavior: 'smooth' })
