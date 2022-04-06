@@ -21,7 +21,7 @@ exports[`Page: Homepage should mount component properly 1`] = `
   </header>
    
   <div
-    class="flex space-x-2 items-center justify-between px-6 pt-4 pb-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
+    class="flex space-x-2 items-center justify-between px-6 py-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
   >
     <label
       class="block flex-1 relative rounded-md shadow-sm"
@@ -44,7 +44,7 @@ exports[`Page: Homepage should mount component properly 1`] = `
       <input
         aria-describedby="pokemon-name"
         autocomplete="off"
-        class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12"
+        class="rounded block text-gray-800 bg-green-50 w-full pl-12 py-3 pr-12"
         id="pokemon_name"
         placeholder="Pokemon name"
       />

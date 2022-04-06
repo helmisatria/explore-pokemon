@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page: Pokemon Detail Page should mount component properly 1`] = `
+<div
+  aria-labelledby="modal-title"
+  aria-modal="true"
+  class="fixed z-10 inset-0 overflow-y-auto"
+  role="dialog"
+>
+  <div
+    class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+  >
+    <transition-stub
+      enteractiveclass="ease-out duration-300"
+      enterclass="opacity-0"
+      entertoclass="opacity-100"
+      leaveactiveclass="ease-in duration-200"
+      leaveclass="opacity-100"
+      leavetoclass="opacity-0"
+    >
+      <div
+        aria-hidden="true"
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      />
+    </transition-stub>
+     
+    <span
+      aria-hidden="true"
+      class="hidden sm:inline-block sm:align-middle sm:h-screen"
+    >
+      ​
+    </span>
+     
+    <transition-stub
+      enteractiveclass="ease-out duration-300"
+      enterclass="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      entertoclass="opacity-100 translate-y-0 sm:scale-100"
+      leaveactiveclass="ease-in duration-200"
+      leaveclass="opacity-100 translate-y-0 sm:scale-100"
+      leavetoclass="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    >
+      <div
+        class="relative inline-block align-bottom bg-white rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
+      >
+        <div>
+          <div
+            class="flex items-center space-x-4"
+          >
+            <div
+              class="flex items-center justify-center h-10 w-10 rounded-full bg-green-100"
+            >
+              <icofilter-stub />
+            </div>
+             
+            <h2
+              class="text-lg leading-6 font-medium text-gray-900"
+              id="modal-title"
+            >
+              
+              Advanced Search
+            
+            </h2>
+          </div>
+           
+          <div
+            class="pt-6"
+          >
+            <div
+              class="mt-2 space-y-3"
+            >
+              <div>
+                <label
+                  class="block flex-1 relative rounded-md shadow-sm"
+                  for="pokemon_name"
+                >
+                  <p
+                    class="sr-only"
+                  >
+                    Pokemon Name
+                  </p>
+                   
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <icosearch-stub
+                      class="text-gray-600"
+                    />
+                  </div>
+                   
+                  <input
+                    aria-describedby="pokemon-name"
+                    autocomplete="off"
+                    class="rounded block text-gray-800 border w-full pl-12 py-3 pr-12"
+                    id="pokemon_name"
+                    placeholder="Pokemon name"
+                  />
+                </label>
+              </div>
+               
+              <div>
+                <p
+                  class="text-sm font-medium text-gray-500"
+                >
+                  Types
+                </p>
+                 
+                <div
+                  class="flex flex-wrap mt-3"
+                >
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                  <label
+                    class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                  >
+                    <input
+                      class="hidden"
+                      type="checkbox"
+                      value="fire"
+                    />
+                     
+                    <span
+                      class="py-[4px] px-4"
+                    >
+                      <span
+                        class="text-sm leading-5 font-medium text-gray-900 capitalize"
+                      >
+                        
+                        fire
+                      
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="mt-5 sm:mt-6"
+        >
+          <button
+            class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+            type="button"
+          >
+            
+            Search Pokemon
+          
+          </button>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</div>
+`;

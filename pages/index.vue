@@ -6,7 +6,7 @@
     </header>
 
     <div
-      class="flex space-x-2 items-center justify-between px-6 pt-4 pb-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
+      class="flex space-x-2 items-center justify-between px-6 py-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
     >
       <label for="pokemon_name" class="block flex-1 relative rounded-md shadow-sm">
         <p class="sr-only">Pokemon Name</p>
@@ -15,7 +15,7 @@
         </div>
         <input
           id="pokemon_name"
-          class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12"
+          class="rounded block text-gray-800 bg-green-50 w-full pl-12 py-3 pr-12"
           placeholder="Pokemon name"
           aria-describedby="pokemon-name"
           autocomplete="off"

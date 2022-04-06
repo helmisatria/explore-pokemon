@@ -1,6 +1,6 @@
 <template>
   <article
-    class="`pt-5 pb-3 relative rounded-xl shadow flex flex-col items-center transition ease ring-2 ring-transparent hover:ring-gray-400 hover:ring-offset-2 `"
+    class="`pt-5 pb-3 relative rounded-xl shadow flex flex-col items-center transition ease ring-2 ring-transparent hover:ring-green-400 hover:ring-offset-2 `"
     :class="[`${backgroundColor} bg-opacity-30`]"
   >
     <div

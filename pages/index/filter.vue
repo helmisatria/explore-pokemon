@@ -42,46 +42,67 @@
       >
         <div
           v-if="isActive"
-          class="relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
+          class="relative inline-block align-bottom bg-white rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
         >
           <div>
-            <div
-              class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"
-            >
-              <!-- Heroicon name: outline/check -->
-              <svg
-                class="h-6 w-6 text-green-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+            <div class="flex items-center space-x-4">
+              <div class="flex items-center justify-center h-10 w-10 rounded-full bg-green-100">
+                <IcoFilter />
+              </div>
+              <h2 id="modal-title" class="text-lg leading-6 font-medium text-gray-900">
+                Advanced Search
+              </h2>
             </div>
-            <div class="mt-3 text-center sm:mt-5">
-              <h3 id="modal-title" class="text-lg leading-6 font-medium text-gray-900">
-                Payment successful
-              </h3>
-              <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
-                </p>
+            <div class="pt-6">
+              <div class="mt-2 space-y-3">
+                <div>
+                  <label for="pokemon_name" class="block flex-1 relative rounded-md shadow-sm">
+                    <p class="sr-only">Pokemon Name</p>
+                    <div
+                      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                    >
+                      <IcoSearch class="text-gray-600" />
+                    </div>
+                    <input
+                      id="pokemon_name"
+                      v-model="form.name"
+                      class="rounded block text-gray-800 border w-full pl-12 py-3 pr-12"
+                      placeholder="Pokemon name"
+                      aria-describedby="pokemon-name"
+                      autocomplete="off"
+                    />
+                  </label>
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Types</p>
+                  <div class="flex flex-wrap mt-3">
+                    <label
+                      v-for="i in 10"
+                      :key="i"
+                      :class="{
+                        'bg-white border border-gray-400 ring-green-400': isChecked('fire'),
+                      }"
+                      class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                    >
+                      <input v-model="form.types" value="fire" type="checkbox" class="hidden" />
+                      <span class="py-[4px] px-4">
+                        <span class="text-sm leading-5 font-medium text-gray-900 capitalize">
+                          fire
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="mt-5 sm:mt-6">
             <button
               type="button"
-              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
             >
-              Go back to dashboard
+              Search Pokemon
             </button>
           </div>
         </div>
@@ -91,11 +112,19 @@
 </template>
 
 <script>
+import IcoSearch from '../../components/icons/IcoSearch.vue'
+import IcoFilter from '../../components/icons/IcoFilter.vue'
+
 export default {
   name: 'FilterPage',
+  components: { IcoFilter, IcoSearch },
   data() {
     return {
       isActive: false,
+      form: {
+        name: '',
+        types: [],
+      },
     }
   },
   mounted() {
@@ -107,6 +136,9 @@ export default {
       setTimeout(() => {
         this.$router.replace('/')
       }, 200)
+    },
+    isChecked(type) {
+      return this.form.types.includes(type)
     },
   },
 }
