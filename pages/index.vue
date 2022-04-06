@@ -154,9 +154,9 @@ export default {
       }
 
       this.searchTimeout = setTimeout(() => {
-        const lowercasedKeyword = e.target.value.toLowerCase()
         this.resetFilter()
-        this.queryFilter.name = `%${lowercasedKeyword}%`
+
+        this.queryFilter.name = e.target.value
         this.fetchPokemons({ isAdvancedSearch: true })
 
         window.scrollTo({ top: 0, behavior: 'smooth' })

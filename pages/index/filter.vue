@@ -40,9 +40,10 @@
         leave-class="opacity-100 translate-y-0 sm:scale-100"
         leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       >
-        <div
+        <form
           v-if="isActive"
           class="relative inline-block align-bottom bg-white rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
+          @submit.prevent="onSubmit"
         >
           <div>
             <div class="flex items-center space-x-4">
@@ -78,17 +79,22 @@
                   <p class="text-sm font-medium text-gray-500">Types</p>
                   <div class="flex flex-wrap mt-3">
                     <label
-                      v-for="i in 10"
-                      :key="i"
+                      v-for="type in pokemonTypes"
+                      :key="type.id"
                       :class="{
-                        'bg-white border border-gray-400 ring-green-400': isChecked('fire'),
+                        'bg-white border border-gray-400 ring-green-400': isChecked(type.id),
                       }"
                       class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
                     >
-                      <input v-model="form.types" value="fire" type="checkbox" class="hidden" />
+                      <input
+                        v-model="form.typeIds"
+                        :value="type.id"
+                        type="checkbox"
+                        class="hidden"
+                      />
                       <span class="py-[4px] px-4">
                         <span class="text-sm leading-5 font-medium text-gray-900 capitalize">
-                          fire
+                          {{ type.name }}
                         </span>
                       </span>
                     </label>
@@ -99,21 +105,24 @@
           </div>
           <div class="mt-5 sm:mt-6">
             <button
-              type="button"
-              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              type="submit"
+              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
             >
               Search Pokemon
             </button>
           </div>
-        </div>
+        </form>
       </transition>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia'
+
 import IcoSearch from '../../components/icons/IcoSearch.vue'
 import IcoFilter from '../../components/icons/IcoFilter.vue'
+import { usePokemonStore } from '~/store'
 
 export default {
   name: 'FilterPage',
@@ -123,14 +132,23 @@ export default {
       isActive: false,
       form: {
         name: '',
-        types: [],
+        typeIds: [],
       },
     }
   },
+  computed: {
+    ...mapState(usePokemonStore, ['pokemonTypes', 'queryFilter']),
+  },
   mounted() {
     this.isActive = true
+    this.prefillData()
   },
   methods: {
+    ...mapActions(usePokemonStore, ['fetchPokemons', 'resetFilter']),
+    prefillData() {
+      this.form.name = this.queryFilter.name
+      this.form.typeIds = this.queryFilter.typeIds
+    },
     closeModal() {
       this.isActive = false
       setTimeout(() => {
@@ -138,7 +156,14 @@ export default {
       }, 200)
     },
     isChecked(type) {
-      return this.form.types.includes(type)
+      return this.form.typeIds.includes(type)
+    },
+    async onSubmit() {
+      this.resetFilter()
+      this.queryFilter.name = this.form.name
+      this.queryFilter.typeIds = this.form.typeIds
+      await this.fetchPokemons({ isAdvancedSearch: true })
+      this.closeModal()
     },
   },
 }

@@ -80,8 +80,9 @@ describe('Page: Homepage', () => {
       expect(wrapper.vm.$pinia.app.fetchPokemons).toHaveBeenCalledWith({ isAdvancedSearch: true })
       expect(wrapper.vm.$pinia.state.value.pokemon.queryFilter).toEqual({
         limit: 20,
-        name: '%bulbasaur%',
+        name: 'bulbasaur',
         offset: 0,
+        typeIds: [],
       })
     })
   })
