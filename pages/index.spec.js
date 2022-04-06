@@ -52,4 +52,17 @@ describe('Page: Homepage', () => {
 
     expect(wrapper.find('.loading').exists()).toBe(true)
   })
+
+  it('should call fetch, given on load more', async () => {
+    wrapper.vm.$pinia.state.value.pokemon.pokemonsTotal = 100
+    wrapper.vm.$pinia.app.fetchPokemons = jest.fn()
+    wrapper.vm.loadMore()
+
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.$pinia.app.fetchPokemons).toHaveBeenCalledTimes(1)
+    expect(wrapper.find('.loading').exists()).toBe(true)
+
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find('.loading').exists()).toBe(false)
+  })
 })

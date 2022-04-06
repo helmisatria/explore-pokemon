@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout: defaultLayout should mount component properly 1`] = `
+<div
+  class="max-w-lg min-h-screen shadow-md mx-auto"
+>
+  <onlineofflineindicator-stub />
+   
+  <nuxt />
+</div>
+`;
