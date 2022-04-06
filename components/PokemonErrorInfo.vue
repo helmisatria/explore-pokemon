@@ -16,7 +16,6 @@ export default {
   },
   watch: {
     onlineStatus(newStatus, previousStatus) {
-      console.log(newStatus, previousStatus)
       if (previousStatus !== 'online' && newStatus === 'online') {
         this.reload()
       }

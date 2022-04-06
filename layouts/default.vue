@@ -11,6 +11,5 @@ import OnlineOfflineIndicator from '../components/OnlineOfflineIndicator.vue'
 export default {
   name: 'DefaultLayout',
   components: { OnlineOfflineIndicator },
-  methods: {},
 }
 </script>
