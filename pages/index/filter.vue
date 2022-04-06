@@ -22,6 +22,7 @@
           v-if="isActive"
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
           aria-hidden="true"
+          @click="closeModal"
         ></div>
       </transition>
 
@@ -99,6 +100,14 @@ export default {
   },
   mounted() {
     this.isActive = true
+  },
+  methods: {
+    closeModal() {
+      this.isActive = false
+      setTimeout(() => {
+        this.$router.replace('/')
+      }, 200)
+    },
   },
 }
 </script>

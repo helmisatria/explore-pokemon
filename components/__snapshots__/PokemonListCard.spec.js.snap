@@ -2,10 +2,10 @@
 
 exports[`Component: PokemonListCard should mount component properly 1`] = `
 <article
-  class="pt-5 pb-3 relative rounded-lg shadow flex flex-col items-center bg-pokemon-grass bg-opacity-30"
+  class="\`pt-5 pb-3 relative rounded-xl shadow flex flex-col items-center transition ease ring-2 ring-transparent hover:ring-gray-400 hover:ring-offset-2 \` bg-pokemon-grass bg-opacity-30"
 >
   <div
-    class="absolute leading-none top-[2px] left-[2px] rounded-tl-md rounded py-1 px-2 flex items-center bg-pokemon-grass bg-opacity-40"
+    class="absolute leading-none top-[2px] left-[2px] rounded-tl-xl rounded py-1 px-2 flex items-center bg-pokemon-grass bg-opacity-40"
   >
     <span
       class="text-xs text-white"

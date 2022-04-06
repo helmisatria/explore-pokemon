@@ -6,7 +6,8 @@
     </header>
 
     <div class="px-6 pt-6">
-      <div class="mt-1 relative rounded-md shadow-sm">
+      <label for="pokemon_name" class="block mt-1 relative rounded-md shadow-sm">
+        <p class="sr-only">Pokemon Name</p>
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <IcoSearch class="text-gray-600" />
         </div>
@@ -16,9 +17,10 @@
           placeholder="Pokemon name"
           aria-describedby="pokemon-name"
           autocomplete="off"
+          :value="queryFilter.name.replace(/\%/g, '')"
           @input="handleSearch"
         />
-      </div>
+      </label>
 
       <p class="total-pokemon text-sm mt-4 text-gray-500 text-right">
         Got {{ pokemonsTotal }} pokémon

@@ -23,9 +23,16 @@ exports[`Page: Homepage should mount component properly 1`] = `
   <div
     class="px-6 pt-6"
   >
-    <div
-      class="mt-1 relative rounded-md shadow-sm"
+    <label
+      class="block mt-1 relative rounded-md shadow-sm"
+      for="pokemon_name"
     >
+      <p
+        class="sr-only"
+      >
+        Pokemon Name
+      </p>
+       
       <div
         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
       >
@@ -41,7 +48,7 @@ exports[`Page: Homepage should mount component properly 1`] = `
         id="pokemon_name"
         placeholder="Pokemon name"
       />
-    </div>
+    </label>
      
     <p
       class="total-pokemon text-sm mt-4 text-gray-500 text-right"

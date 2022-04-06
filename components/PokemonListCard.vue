@@ -1,10 +1,10 @@
 <template>
   <article
-    class="pt-5 pb-3 relative rounded-lg shadow flex flex-col items-center"
+    class="`pt-5 pb-3 relative rounded-xl shadow flex flex-col items-center transition ease ring-2 ring-transparent hover:ring-gray-400 hover:ring-offset-2 `"
     :class="[`${backgroundColor} bg-opacity-30`]"
   >
     <div
-      class="absolute leading-none top-[2px] left-[2px] rounded-tl-md rounded py-1 px-2 flex items-center"
+      class="absolute leading-none top-[2px] left-[2px] rounded-tl-xl rounded py-1 px-2 flex items-center"
       :class="`${backgroundColor} bg-opacity-40`"
     >
       <span class="text-xs text-white">#{{ formatId(String(pokemon.id)) }}</span>
