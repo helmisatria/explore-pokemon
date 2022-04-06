@@ -6,9 +6,9 @@
     ]"
   >
     <header class="flex items-center shadow-sm sticky top-0 backdrop-blur-sm">
-      <a href="#" class="back-btn pl-6 pr-4 py-5" @click="$router.go(-1)">
+      <router-link to="/" class="back-btn pl-6 pr-4 py-5">
         <IcoBack />
-      </a>
+      </router-link>
       <h1 v-if="pokemonSpecies.id" class="pokemon-title text-xl font-medium capitalize">
         {{ pokemonSpecies.name }} #{{ formatId(String(pokemonSpecies.id)) }}
       </h1>

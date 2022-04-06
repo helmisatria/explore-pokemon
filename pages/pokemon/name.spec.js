@@ -29,11 +29,6 @@ describe('Page: Pokemon Detail Page', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should call go(-1), given icon back clicked', () => {
-    wrapper.find('.back-btn').trigger('click')
-    expect(wrapper.vm.$router.go).toHaveBeenCalledWith(-1)
-  })
-
   it('should show pokemon species info, given data fetched', async () => {
     wrapper.vm.$pinia.state.value.pokemon.pokemonDetail = pokemonDetailData.species[0]
     await wrapper.vm.$nextTick()

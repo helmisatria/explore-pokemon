@@ -21,10 +21,10 @@ exports[`Page: Homepage should mount component properly 1`] = `
   </header>
    
   <div
-    class="px-6 pt-6"
+    class="flex space-x-2 items-center justify-between px-6 pt-4 pb-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
   >
     <label
-      class="block mt-1 relative rounded-md shadow-sm"
+      class="block flex-1 relative rounded-md shadow-sm"
       for="pokemon_name"
     >
       <p
@@ -44,22 +44,40 @@ exports[`Page: Homepage should mount component properly 1`] = `
       <input
         aria-describedby="pokemon-name"
         autocomplete="off"
-        class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12 sm:leading-5"
+        class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12"
         id="pokemon_name"
         placeholder="Pokemon name"
       />
     </label>
      
-    <p
-      class="total-pokemon text-sm mt-4 text-gray-500 text-right"
+    <router-link
+      to="/filter"
     >
-      
-      Got 0 pokémon
-    
-    </p>
+      <p
+        class="sr-only"
+      >
+        Advanced Filter
+      </p>
+       
+      <div
+        class="px-3 py-3 bg-white rounded h-full"
+      >
+        <icofilter-stub />
+      </div>
+    </router-link>
   </div>
    
-  <!---->
+  <main
+    class="px-6 pb-6"
+  >
+    <p
+      class="total-pokemon text-sm text-gray-500 text-right"
+    >
+      Got 0 pokémon
+    </p>
+     
+    <!---->
+  </main>
    
   <!---->
    

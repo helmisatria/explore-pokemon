@@ -45,7 +45,7 @@ describe('Page: Homepage', () => {
     await wrapper.vm.$nextTick()
 
     expect(wrapper.find('PokemonErrorInfo-stub').exists()).toBe(true)
-    expect(wrapper.find('main').exists()).toBe(false)
+    expect(wrapper.find('.pokemon-list-wrapper').exists()).toBe(false)
   })
 
   it('should show loading state on infinite scroll, given on fetching data', async () => {

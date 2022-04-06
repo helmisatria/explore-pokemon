@@ -66,7 +66,7 @@
               </svg>
             </div>
             <div class="mt-3 text-center sm:mt-5">
-              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+              <h3 id="modal-title" class="text-lg leading-6 font-medium text-gray-900">
                 Payment successful
               </h3>
               <div class="mt-2">

@@ -7,12 +7,12 @@ exports[`Page: Pokemon Detail Page should mount component properly 1`] = `
   <header
     class="flex items-center shadow-sm sticky top-0 backdrop-blur-sm"
   >
-    <a
+    <router-link
       class="back-btn pl-6 pr-4 py-5"
-      href="#"
+      to="/"
     >
       <icoback-stub />
-    </a>
+    </router-link>
      
     <!---->
   </header>

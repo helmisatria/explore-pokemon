@@ -5,15 +5,17 @@
       <p class="text-gray-800 mt-2">Find your favorite Pokémon</p>
     </header>
 
-    <div class="px-6 pt-6">
-      <label for="pokemon_name" class="block mt-1 relative rounded-md shadow-sm">
+    <div
+      class="flex space-x-2 items-center justify-between px-6 pt-4 pb-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
+    >
+      <label for="pokemon_name" class="block flex-1 relative rounded-md shadow-sm">
         <p class="sr-only">Pokemon Name</p>
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <IcoSearch class="text-gray-600" />
         </div>
         <input
           id="pokemon_name"
-          class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12 sm:leading-5"
+          class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12"
           placeholder="Pokemon name"
           aria-describedby="pokemon-name"
           autocomplete="off"
@@ -22,20 +24,31 @@
         />
       </label>
 
-      <p class="total-pokemon text-sm mt-4 text-gray-500 text-right">
-        Got {{ pokemonsTotal }} pokémon
-      </p>
+      <router-link to="/filter">
+        <p class="sr-only">Advanced Filter</p>
+        <div class="px-3 py-3 bg-white rounded h-full">
+          <IcoFilter />
+        </div>
+      </router-link>
     </div>
 
-    <main v-if="pokemonsTotal" class="px-6 pb-6">
-      <section id="pokemon-list" class="mt-3 grid grid-cols-2 gap-2">
-        <router-link v-for="pokemon in pokemons" :key="pokemon.id" :to="`/pokemon/${pokemon.name}`">
-          <PokemonListCard :pokemon="pokemon" />
-        </router-link>
-      </section>
+    <main class="px-6 pb-6">
+      <p class="total-pokemon text-sm text-gray-500 text-right">Got {{ pokemonsTotal }} pokémon</p>
 
-      <div v-if="busy" class="loading text-gray-600 pt-4 text-center">
-        <p>Getting more pokemon data, please wait...</p>
+      <div v-if="pokemonsTotal" class="pokemon-list-wrapper">
+        <section id="pokemon-list" class="mt-3 grid grid-cols-2 gap-2">
+          <router-link
+            v-for="pokemon in pokemons"
+            :key="pokemon.id"
+            :to="`/pokemon/${pokemon.name}`"
+          >
+            <PokemonListCard :pokemon="pokemon" />
+          </router-link>
+        </section>
+
+        <div v-if="busy" class="loading text-gray-600 pt-4 text-center">
+          <p>Getting more pokemon data, please wait...</p>
+        </div>
       </div>
     </main>
 
@@ -53,6 +66,8 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
+
+import IcoFilter from '../components/icons/IcoFilter.vue'
 import IcoSearch from '../components/icons/IcoSearch.vue'
 
 import PokemonErrorInfo from '../components/PokemonErrorInfo.vue'
@@ -62,7 +77,7 @@ import { createDbStore, insertPokemons, openDB } from '~/plugins/db'
 
 export default {
   name: 'ListPokemon',
-  components: { PokemonListCard, PokemonErrorInfo, IcoSearch },
+  components: { PokemonListCard, PokemonErrorInfo, IcoSearch, IcoFilter },
   scrollToTop: false,
   async asyncData({ $pinia }) {
     const store = usePokemonStore($pinia)
