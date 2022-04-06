@@ -5,13 +5,19 @@
       <p class="text-gray-800 mt-2">Find your favorite Pokémon</p>
     </header>
 
-    <div
+    <form
       class="flex space-x-2 items-center justify-between px-6 py-4 bg-[#FEFEFE] sticky top-0 z-10 bg-opacity-40"
     >
       <label for="pokemon_name" class="block flex-1 relative rounded-md shadow-sm">
         <p class="sr-only">Pokemon Name</p>
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <IcoSearch class="text-gray-600" />
+        </div>
+        <div
+          v-if="fetchTransition === 'submitting'"
+          class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+        >
+          <IcoLoading class="text-green-600 animate-spin" />
         </div>
         <input
           id="pokemon_name"
@@ -26,11 +32,15 @@
 
       <router-link to="/filter">
         <p class="sr-only">Advanced Filter</p>
-        <div class="px-3 py-3 bg-white rounded h-full">
+        <div class="relative px-3 py-3 bg-white rounded h-full border border-green-50">
           <IcoFilter />
+          <div
+            v-if="queryFilter.typeIds.length"
+            class="w-2 h-2 rounded-full bg-green-500 absolute top-[-2px] left-[-2px]"
+          ></div>
         </div>
       </router-link>
-    </div>
+    </form>
 
     <main class="px-6 pb-6">
       <p class="total-pokemon text-sm text-gray-500 text-right">Got {{ pokemonsTotal }} pokémon</p>
@@ -67,6 +77,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 
+import IcoLoading from '../components/icons/IcoLoading.vue'
 import IcoFilter from '../components/icons/IcoFilter.vue'
 import IcoSearch from '../components/icons/IcoSearch.vue'
 
@@ -77,7 +88,7 @@ import { createDbStore, insertPokemons, openDB } from '~/plugins/db'
 
 export default {
   name: 'ListPokemon',
-  components: { PokemonListCard, PokemonErrorInfo, IcoSearch, IcoFilter },
+  components: { PokemonListCard, PokemonErrorInfo, IcoSearch, IcoFilter, IcoLoading },
   scrollToTop: false,
   async asyncData({ $pinia }) {
     const store = usePokemonStore($pinia)
@@ -97,6 +108,7 @@ export default {
       'fetchFailed',
       'onlineStatus',
       'queryFilter',
+      'fetchTransition',
     ]),
     disableInfiniteScroll() {
       return (

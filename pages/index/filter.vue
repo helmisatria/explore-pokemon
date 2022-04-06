@@ -81,10 +81,13 @@
                     <label
                       v-for="type in pokemonTypes"
                       :key="type.id"
-                      :class="{
-                        'bg-white border border-gray-400 ring-green-400': isChecked(type.id),
-                      }"
-                      class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease hover:ring-offset-2 hover:ring-green-400"
+                      :class="[
+                        isChecked(type.id)
+                          ? 'ring-green-400 hover:ring-green-400 ring-offset-2'
+                          : 'border border-gray-200 hover:ring-offset-2 hover:ring-gray-200',
+                        `bg-pokemon-${type.name} bg-opacity-20`,
+                      ]"
+                      class="inline-flex items-center rounded-lg cursor-pointer mr-2 mb-2 ring-1 ring-transparent transition ease"
                     >
                       <input
                         v-model="form.typeIds"
@@ -106,9 +109,16 @@
           <div class="mt-5 sm:mt-6">
             <button
               type="submit"
-              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
+              :class="[
+                fetchTransition === 'submitting'
+                  ? 'bg-gray-400'
+                  : 'bg-green-600 hover:bg-green-700 focus:ring-green-500',
+              ]"
+              :disabled="fetchTransition === 'submitting'"
+              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm"
             >
-              Search Pokemon
+              <span v-if="fetchTransition === 'submitting'">Searching, please wait...</span>
+              <span v-else>Searching Pokemon</span>
             </button>
           </div>
         </form>
@@ -137,7 +147,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePokemonStore, ['pokemonTypes', 'queryFilter']),
+    ...mapState(usePokemonStore, ['pokemonTypes', 'queryFilter', 'fetchTransition']),
   },
   mounted() {
     this.isActive = true

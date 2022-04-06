@@ -7,6 +7,7 @@ export const usePokemonStore = defineStore('pokemon', {
   state: () => {
     return {
       onlineStatus: 'idle',
+      fetchTransition: 'idle',
 
       pokemons: [],
       pokemonTypes: [],
@@ -41,6 +42,7 @@ export const usePokemonStore = defineStore('pokemon', {
       this.queryFilter.typeIds = []
     },
     fetchPokemons({ isAdvancedSearch = false } = {}) {
+      this.fetchTransition = 'submitting'
       let gqlQuery = getPokemonsQuery
 
       if (this.getSerializedQueryFilter.typeIds?.length) {
@@ -73,6 +75,9 @@ export const usePokemonStore = defineStore('pokemon', {
         })
         .catch((e) => {
           this.fetchFailed = 'pokemons'
+        })
+        .finally(() => {
+          this.fetchTransition = 'idle'
         })
     },
     fetchPokemonDetail({ name }) {
