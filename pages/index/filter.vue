@@ -46,6 +46,7 @@
           @submit.prevent="onSubmit"
         >
           <div>
+            <!-- Header -->
             <div class="flex items-center space-x-4">
               <div class="flex items-center justify-center h-10 w-10 rounded-full bg-green-100">
                 <IcoFilter />
@@ -54,6 +55,9 @@
                 Advanced Search
               </h2>
             </div>
+            <!-- End of Header -->
+
+            <!-- Advanced Form -->
             <div class="pt-6">
               <div class="mt-2 space-y-3">
                 <div>
@@ -106,6 +110,9 @@
               </div>
             </div>
           </div>
+          <!-- Advanced Form -->
+
+          <!-- Footer & Submit Button -->
           <div class="mt-5 sm:mt-6">
             <button
               type="submit"
@@ -121,6 +128,7 @@
               <span v-else>Searching Pokemon</span>
             </button>
           </div>
+          <!-- Footer & Submit Button -->
         </form>
       </transition>
     </div>
