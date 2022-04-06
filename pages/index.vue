@@ -13,7 +13,7 @@
         </div>
         <input
           id="pokemon_name"
-          class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12 sm:text-sm sm:leading-5"
+          class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12 sm:leading-5"
           placeholder="Pokemon name"
           aria-describedby="pokemon-name"
           autocomplete="off"
