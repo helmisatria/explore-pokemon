@@ -64,7 +64,6 @@ export default {
       purpose: 'any',
     },
     workbox: {
-      enabled: true,
       config: { debug: process.env.NODE_ENV === 'development' },
       offlinePage: 'offline.html',
       runtimeCaching: [

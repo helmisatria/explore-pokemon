@@ -11,6 +11,8 @@ describe('Page: Homepage', () => {
   const localVue = createLocalVue()
   localVue.use(PiniaVuePlugin)
 
+  jest.useFakeTimers()
+
   const generateWrapper = () => {
     return shallowMount(index, {
       localVue,
@@ -32,7 +34,7 @@ describe('Page: Homepage', () => {
     await wrapper.vm.$nextTick()
 
     expect(wrapper.find('main').exists()).toBe(true)
-    expect(wrapper.find('.total-pokemon').text()).toBe('Total Pokemon: 100')
+    expect(wrapper.find('.total-pokemon').text()).toBe('Got 100 pokémon')
     expect(wrapper.findAll('router-link > PokemonListCard-stub').length).toBe(
       pokemonsData.species.length
     )
@@ -64,5 +66,23 @@ describe('Page: Homepage', () => {
 
     await wrapper.vm.$nextTick()
     expect(wrapper.find('.loading').exists()).toBe(false)
+  })
+
+  describe('Handle Search', () => {
+    it('should trigger fetch pokemons, given search input is changed', () => {
+      const input = wrapper.find('input')
+      input.element.value = 'bulbasaur'
+      input.trigger('input')
+      wrapper.vm.$pinia.app.fetchPokemons = jest.fn()
+
+      jest.runOnlyPendingTimers()
+
+      expect(wrapper.vm.$pinia.app.fetchPokemons).toHaveBeenCalledWith({ isAdvancedSearch: true })
+      expect(wrapper.vm.$pinia.state.value.pokemon.queryFilter).toEqual({
+        limit: 20,
+        name: '%bulbasaur%',
+        offset: 0,
+      })
+    })
   })
 })

@@ -1,16 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page: Homepage should mount component properly 1`] = `
-<div>
-  <nav
-    class="px-6 py-5 shadow-sm"
+<div
+  class="bg-[#FEFEFE]"
+>
+  <header
+    class="px-6 pt-12"
   >
     <h1
-      class="text-xl font-medium"
+      class="text-4xl font-semibold"
     >
-      Pokedex
+      Pokédex
     </h1>
-  </nav>
+     
+    <p
+      class="text-gray-800 mt-2"
+    >
+      Find your favorite Pokémon
+    </p>
+  </header>
+   
+  <div
+    class="px-6 pt-6"
+  >
+    <div
+      class="mt-1 relative rounded-md shadow-sm"
+    >
+      <div
+        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+      >
+        <icosearch-stub
+          class="text-gray-600"
+        />
+      </div>
+       
+      <input
+        aria-describedby="pokemon-name"
+        autocomplete="off"
+        class="rounded block text-gray-600 bg-blue-50 w-full pl-12 py-3 pr-12 sm:text-sm sm:leading-5"
+        id="pokemon_name"
+        placeholder="Pokemon name"
+      />
+    </div>
+     
+    <p
+      class="total-pokemon text-sm mt-4 text-gray-500 text-right"
+    >
+      
+      Got 0 pokémon
+    
+    </p>
+  </div>
    
   <!---->
    
@@ -20,5 +60,7 @@ exports[`Page: Homepage should mount component properly 1`] = `
     infinite-scroll-disabled="disableInfiniteScroll"
     infinite-scroll-distance="300"
   />
+   
+  <nuxt />
 </div>
 `;

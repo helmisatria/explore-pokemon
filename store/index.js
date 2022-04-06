@@ -14,6 +14,7 @@ export const usePokemonStore = defineStore('pokemon', {
       queryFilter: {
         offset: 0,
         limit: 20,
+        name: '%',
       },
 
       pokemonDetail: {},
@@ -21,7 +22,11 @@ export const usePokemonStore = defineStore('pokemon', {
     }
   },
   actions: {
-    fetchPokemons() {
+    resetFilter() {
+      this.queryFilter.name = '%'
+      this.queryFilter.offset = 0
+    },
+    fetchPokemons({ isAdvancedSearch = false } = {}) {
       const gqlQuery = getPokemonsQuery
 
       return fetch('https://beta.pokeapi.co/graphql/v1beta', {
@@ -35,6 +40,10 @@ export const usePokemonStore = defineStore('pokemon', {
       })
         .then((res) => res.json())
         .then((res) => {
+          if (isAdvancedSearch) {
+            this.pokemons = []
+          }
+
           this.fetchFailed = null
           this.pokemons = [...this.pokemons, ...res.data.species]
           this.pokemonsTotal = res.data.species_aggregate.aggregate.count
