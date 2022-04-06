@@ -31,4 +31,13 @@ describe('Component: PokemonErrorInfo', () => {
     wrapper.find('button').trigger('click')
     expect(wrapper.emitted('reload')).toBeTruthy()
   })
+
+  it('should display offline info, given in offline mode', async () => {
+    wrapper.vm.$pinia.state.value.pokemon.onlineStatus = 'offline'
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('.error-information > p').text()).toBe(
+      `You're offline, please check your connection`
+    )
+  })
 })

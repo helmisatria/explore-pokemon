@@ -1,7 +1,8 @@
 <template>
   <div class="error-information p-6 flex flex-col justify-center space-y-2">
-    <p>Something went wrong, please try again</p>
-    <button class="bg-green-500 rounded px-3 py-2 text-white" @click="reload">Reload</button>
+    <p v-if="onlineStatus === 'offline'">You're offline, please check your connection</p>
+    <p v-else>Something went wrong, please try again</p>
+    <button class="bg-green-500 rounded px-3 py-2 text-white" @click="reload">Try Again</button>
   </div>
 </template>
 

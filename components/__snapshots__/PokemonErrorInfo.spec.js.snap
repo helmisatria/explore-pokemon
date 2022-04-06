@@ -11,7 +11,7 @@ exports[`Component: PokemonErrorInfo should mount component properly 1`] = `
   <button
     class="bg-green-500 rounded px-3 py-2 text-white"
   >
-    Reload
+    Try Again
   </button>
 </div>
 `;
