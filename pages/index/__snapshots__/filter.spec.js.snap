@@ -120,7 +120,7 @@ exports[`Page: Pokemon Detail Page should mount component properly 1`] = `
             type="submit"
           >
             <span>
-              Searching Pokemon
+              Search Pokemon
             </span>
           </button>
         </div>
