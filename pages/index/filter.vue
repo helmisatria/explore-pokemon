@@ -125,7 +125,7 @@
               class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm"
             >
               <span v-if="fetchTransition === 'submitting'">Searching, please wait...</span>
-              <span v-else>Searching Pokemon</span>
+              <span v-else>Search Pokemon</span>
             </button>
           </div>
           <!-- Footer & Submit Button -->
