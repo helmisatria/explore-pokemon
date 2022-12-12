@@ -1,6 +1,6 @@
-# wartek-pokemon
+# helmi-pokemon
 
-Production demo: https://helmi-wartek-pokemon.vercel.app/
+Production demo: https://helmi-satria-pokemon.vercel.app/
 
 Want to check the design of the application? go to this figma link https://www.figma.com/file/n5IUBC6mgrEV2HLZbT6fLK/Wartek-Pokemon?node-id=0%3A1
 
